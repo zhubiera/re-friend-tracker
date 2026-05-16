@@ -189,7 +189,7 @@
             {
                 "id": "AddActivityForm",
                 "title": "Activity",
-                "url": "/activity",
+                "url": "/friend/:friendKey/activity",
                 "formFieldList": [
                     {
                         "id": "activity",
@@ -212,7 +212,7 @@
             {
                 "id": "AddFriendForm",
                 "title": "Friend",
-                "url": "/friend",
+                "url": "/activity/:activityKey/friend",
                 "formFieldList": [
                     {
                         "id": "friend",
