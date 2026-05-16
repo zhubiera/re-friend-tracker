@@ -1,6 +1,6 @@
 {
     "application": {
-        "title": "Requirements Engineering Friend Tracker (FS2026)",
+        "title": "Friends Omar & Era Tracker",
         "formList": [
             {
                 "id": "FriendForm",
@@ -22,7 +22,22 @@
                         "required": true
                     },
                     {
-                        "id":   "location",
+                        "id": "nickname",
+                        "type": "text",
+                        "name": "Nickname",
+                        "width": 2,
+                        "required": false
+                    },
+                    {
+                        "id": "group",
+                        "type": "autocomplete",
+                        "name": "Group",
+                        "url": "/group",
+                        "form": "GroupForm",
+                        "width": 2
+                    },
+                    {
+                        "id": "location",
                         "type": "autocomplete",
                         "name": "Location",
                         "url": "/location",
@@ -32,16 +47,52 @@
                     {
                         "id": "birthdate",
                         "type": "date",
-                        "name": "Birthday",
+                        "name": "Birthdate",
                         "width": 2
                     },
                     {
-                        "id": "comment",
-                        "type": "text",
+                        "id": "comments",
+                        "type": "textarea",
                         "name": "Comments",
+                        "width": 2
+                    },
+                    {
+                        "type": "deleteButton",
+                        "name": "Delete"
+                    },
+                    {
+                        "type": "cancelButton",
+                        "name": "Cancel"
+                    },
+                    {
+                        "type": "okButton",
+                        "name": "Ok"
+                    }
+                ]
+            },
+            {
+                "id": "GroupForm",
+                "title": "Group",
+                "url": "/group",
+                "formFieldList": [
+                    {
+                        "id": "name",
+                        "type": "text",
+                        "name": "GroupName",
                         "width": 2,
-                        "height": 4,
-                        "maxLength": 5000
+                        "required": true
+                    },
+                    {
+                        "id": "creationDate",
+                        "type": "date",
+                        "name": "CreationDate",
+                        "width": 2
+                    },
+                    {
+                        "id": "comments",
+                        "type": "textarea",
+                        "name": "Comments",
+                        "width": 2
                     },
                     {
                         "type": "deleteButton",
@@ -70,6 +121,58 @@
                         "required": true
                     },
                     {
+                        "id": "comments",
+                        "type": "textarea",
+                        "name": "Comments",
+                        "width": 2
+                    },
+                    {
+                        "type": "deleteButton",
+                        "name": "Delete"
+                    },
+                    {
+                        "type": "cancelButton",
+                        "name": "Cancel"
+                    },
+                    {
+                        "type": "okButton",
+                        "name": "Ok"
+                    }
+                ]
+            },
+            {
+                "id": "ActivityForm",
+                "title": "Activity",
+                "url": "/activity",
+                "formFieldList": [
+                    {
+                        "id": "name",
+                        "type": "text",
+                        "name": "ActivityName",
+                        "width": 2,
+                        "required": true
+                    },
+                    {
+                        "id": "date",
+                        "type": "date",
+                        "name": "Date",
+                        "width": 2
+                    },
+                    {
+                        "id": "location",
+                        "type": "autocomplete",
+                        "name": "Location",
+                        "url": "/location",
+                        "form": "LocationForm",
+                        "width": 2
+                    },
+                    {
+                        "id": "comments",
+                        "type": "textarea",
+                        "name": "Comments",
+                        "width": 2
+                    },
+                    {
                         "type": "deleteButton",
                         "name": "Delete"
                     },
@@ -86,21 +189,38 @@
             {
                 "id": "AddActivityForm",
                 "title": "Activity",
-                "url": "/friend/:friendKey/activity",
+                "url": "/activity",
                 "formFieldList": [
                     {
-                        "id":   "activity",
+                        "id": "activity",
                         "type": "autocomplete",
                         "name": "Activity",
                         "url": "/activity",
-                        "defaultKey": "activityKey",
-                        "readonly": true,
                         "form": "ActivityForm",
                         "width": 2
                     },
                     {
-                        "type": "deleteButton",
-                        "name": "Delete"
+                        "type": "cancelButton",
+                        "name": "Cancel"
+                    },
+                    {
+                        "type": "okButton",
+                        "name": "Ok"
+                    }
+                ]
+            },
+            {
+                "id": "AddFriendForm",
+                "title": "Friend",
+                "url": "/friend",
+                "formFieldList": [
+                    {
+                        "id": "friend",
+                        "type": "autocomplete",
+                        "name": "Friend",
+                        "url": "/friend",
+                        "form": "FriendForm",
+                        "width": 2
                     },
                     {
                         "type": "cancelButton",
@@ -116,7 +236,6 @@
         "pageList": [
             {
                 "id": "mainmenu",
-                "name": "MainMenu",
                 "elementList": [
                     {
                         "type": "button",
@@ -131,6 +250,20 @@
                         "icon": "fa-cubes",
                         "color": "yellow",
                         "page": "locationspage"
+                    },
+                    {
+                        "type": "button",
+                        "name": "Groups",
+                        "icon": "fa-weixin",
+                        "color": "wisteria",
+                        "page": "groupspage"
+                    },
+                    {
+                        "type": "button",
+                        "name": "Activities",
+                        "icon": "fa-calendar",
+                        "color": "orange",
+                        "page": "activitiespage"
                     }
                 ]
             },
@@ -155,8 +288,69 @@
                         "color": "blue",
                         "search": true,
                         "url": "/friend",
+                        "page": "frienddetailpage"
+                    }
+                ]
+            },
+            {
+                "id": "frienddetailpage",
+                "elementList": [
+                    {
+                        "type": "backbutton"
+                    },
+                    {
+                        "type": "button",
+                        "name": "EditFriend",
+                        "icon": "fa-user",
+                        "color": "green",
                         "form": {
                             "form": "FriendForm"
+                        }
+                    },
+                    {
+                        "type": "newButton",
+                        "name": "AddActivity",
+                        "icon": "fa-calendar",
+                        "color": "green",
+                        "form": {
+                            "form": "AddActivityForm"
+                        }
+                    },
+                    {
+                        "type": "list",
+                        "icon": "fa-calendar",
+                        "color": "orange",
+                        "search": true,
+                        "url": "/friend/:friendKey/activity",
+                        "form": {
+                            "form": "ActivityForm"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "groupspage",
+                "elementList": [
+                    {
+                        "type": "backbutton"
+                    },
+                    {
+                        "type": "newButton",
+                        "name": "NewGroup",
+                        "icon": "fa-weixin",
+                        "color": "green",
+                        "form": {
+                            "form": "GroupForm"
+                        }
+                    },
+                    {
+                        "type": "list",
+                        "icon": "fa-weixin",
+                        "color": "wisteria",
+                        "search": true,
+                        "url": "/group",
+                        "form": {
+                            "form": "GroupForm"
                         }
                     }
                 ]
@@ -170,21 +364,106 @@
                     {
                         "type": "newButton",
                         "name": "NewLocation",
-                        "icon": "fa-home",
+                        "icon": "fa-cubes",
                         "color": "green",
-                        "width": 2,
                         "form": {
                             "form": "LocationForm"
                         }
                     },
                     {
                         "type": "list",
-                        "icon": "fa-home",
-                        "color": "blue",
+                        "icon": "fa-cubes",
+                        "color": "yellow",
                         "search": true,
                         "url": "/location",
+                        "page": "locationdetailpage"
+                    }
+                ]
+            },
+            {
+                "id": "locationdetailpage",
+                "elementList": [
+                    {
+                        "type": "backbutton"
+                    },
+                    {
+                        "type": "button",
+                        "name": "EditLocation",
+                        "icon": "fa-cubes",
+                        "color": "green",
                         "form": {
                             "form": "LocationForm"
+                        }
+                    },
+                    {
+                        "type": "list",
+                        "icon": "fa-calendar",
+                        "color": "orange",
+                        "search": true,
+                        "url": "/location/:locationKey/activity",
+                        "form": {
+                            "form": "ActivityForm"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "activitiespage",
+                "elementList": [
+                    {
+                        "type": "backbutton"
+                    },
+                    {
+                        "type": "newButton",
+                        "name": "NewActivity",
+                        "icon": "fa-calendar",
+                        "color": "green",
+                        "form": {
+                            "form": "ActivityForm"
+                        }
+                    },
+                    {
+                        "type": "list",
+                        "icon": "fa-calendar",
+                        "color": "orange",
+                        "search": true,
+                        "url": "/activity",
+                        "page": "activitydetailpage"
+                    }
+                ]
+            },
+            {
+                "id": "activitydetailpage",
+                "elementList": [
+                    {
+                        "type": "backbutton"
+                    },
+                    {
+                        "type": "button",
+                        "name": "EditActivity",
+                        "icon": "fa-calendar",
+                        "color": "green",
+                        "form": {
+                            "form": "ActivityForm"
+                        }
+                    },
+                    {
+                        "type": "newButton",
+                        "name": "AddFriend",
+                        "icon": "fa-user",
+                        "color": "green",
+                        "form": {
+                            "form": "AddFriendForm"
+                        }
+                    },
+                    {
+                        "type": "list",
+                        "icon": "fa-user",
+                        "color": "blue",
+                        "search": true,
+                        "url": "/activity/:activityKey/friend",
+                        "form": {
+                            "form": "FriendForm"
                         }
                     }
                 ]
