@@ -10,14 +10,14 @@
                     {
                         "id": "familyName",
                         "type": "text",
-                        "name": "FamilyName",
+                        "name": "Family Name",
                         "width": 1,
                         "required": true
                     },
                     {
                         "id": "firstName",
                         "type": "text",
-                        "name": "FirstName",
+                        "name": "First Name",
                         "width": 1,
                         "required": true
                     },
@@ -52,7 +52,7 @@
                     },
                     {
                         "id": "comments",
-                        "type": "textarea",
+                        "type": "text",
                         "name": "Comments",
                         "width": 2
                     },
@@ -78,19 +78,19 @@
                     {
                         "id": "name",
                         "type": "text",
-                        "name": "GroupName",
+                        "name": "Group Name",
                         "width": 2,
                         "required": true
                     },
                     {
                         "id": "creationDate",
                         "type": "date",
-                        "name": "CreationDate",
+                        "name": "Creation Date",
                         "width": 2
                     },
                     {
                         "id": "comments",
-                        "type": "textarea",
+                        "type": "text",
                         "name": "Comments",
                         "width": 2
                     },
@@ -116,13 +116,13 @@
                     {
                         "id": "name",
                         "type": "text",
-                        "name": "LocationName",
+                        "name": "Location Name",
                         "width": 2,
                         "required": true
                     },
                     {
                         "id": "comments",
-                        "type": "textarea",
+                        "type": "text",
                         "name": "Comments",
                         "width": 2
                     },
@@ -148,7 +148,7 @@
                     {
                         "id": "name",
                         "type": "text",
-                        "name": "ActivityName",
+                        "name": "Activity Name",
                         "width": 2,
                         "required": true
                     },
@@ -168,7 +168,7 @@
                     },
                     {
                         "id": "comments",
-                        "type": "textarea",
+                        "type": "text",
                         "name": "Comments",
                         "width": 2
                     },
@@ -399,7 +399,6 @@
                         "type": "list",
                         "icon": "fa-calendar",
                         "color": "orange",
-                        "search": true,
                         "url": "/location/:locationKey/activity",
                         "form": {
                             "form": "ActivityForm"
@@ -460,7 +459,6 @@
                         "type": "list",
                         "icon": "fa-user",
                         "color": "blue",
-                        "search": true,
                         "url": "/activity/:activityKey/friend",
                         "form": {
                             "form": "FriendForm"
